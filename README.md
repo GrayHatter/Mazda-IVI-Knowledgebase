@@ -12,6 +12,11 @@ Johnson Controls Inc (JCI)
 ## Board
 i.MX6Q from freescale.
 
+### CPU
+It's an ARM 7 series rev10 chip. The board ID says it's a quad core, but the
+system seems to only bring up 2 cores...
+Software Float
+
 ### Radios
 Texas Instruments WiFi and bluetooth combo chip. Both share the same antenna,
 so when using BT, (the JCI software hammers the BT with a lot of noise assuming
@@ -94,7 +99,8 @@ It does handle the bluetooth init processes. It's written to be modular, where
 it'll load the BT init code dynamically at runtime. dl seems to reference only 3
 functions at load time, but I haven't proven that assumption yet.
 
-
+the JCI reflash server seems to listen over bluetooth as well... I'm sure that's
+perfectly secure, and couldn't possibly be abused in the future.
 
 
 #### bteca
@@ -105,7 +111,7 @@ It also appears to use text to speech to call 911, and "talk" to the operator
 giving them prompts using DTMF responses like, talking to the driver, etc.
 
 #### Audio manager
-there's various audio management scripts in lua across the system. I've had no
+there's various audio management scripts in Lua across the system. I've had no
 luck in reverse engineering how they work (I really haven't tried more than 10m
 either)
 
@@ -124,13 +130,13 @@ surface manager wayland/weston. None of the open source code from GENIVI matches
 the interface I found on the car, but it appears to be similar in some respects.
 
 #### Splashplayer
-NIH code that diplays SOMETHING while everyone waits for a the web browesr to
+NIH code that displays SOMETHING while everyone waits for a the web browser to
 start up.
 
 #### Opera
-Seems to interfaces with wayland directly, controlling what's on screen.
+Seems to interfaces with Wayland directly, controlling what's on screen.
 
 #### JCI's NIH browser framework
-Yes, my car runs Javascript... what do you mean that's stupid?! Javascript was
+Yes, my car runs JavaScript... what do you mean that's stupid?! JavaScript was
 obviously made for cars!
 
