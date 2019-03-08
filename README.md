@@ -89,6 +89,9 @@ TODO dependency tree
 this is the main system manager for the system. It starts up all the child
 processes, with a dependency tree written in XML.
 
+#### jci
+Only appears to load benchmarks-kapture and the NIH logging system
+
 #### dmserver
 Device Manager Server (I think)
 
@@ -102,6 +105,15 @@ functions at load time, but I haven't proven that assumption yet.
 the JCI reflash server seems to listen over bluetooth as well... I'm sure that's
 perfectly secure, and couldn't possibly be abused in the future.
 
+Pro tip, this is wrong
+```
+len = strlen("cp -vf")
+memcpy(buffer, "cp -vf", len)
+memcpy(buffer, config_file_source, len3)
+memcpy(buffer, config_file_tmp, len2)
+system(buffer)
+```
+I'm sure there was a reason for this, I'm also sure it was a bad one...
 
 #### bteca
 I think it's the `Bluetooth Emergency Collision Agent`. It looks like it handles
@@ -114,6 +126,11 @@ giving them prompts using DTMF responses like, talking to the driver, etc.
 there's various audio management scripts in Lua across the system. I've had no
 luck in reverse engineering how they work (I really haven't tried more than 10m
 either)
+
+#### JVMM
+something something, accident management
+
+something something, navigation stuff too
 
 ### GUI
 The User Interface itself is Wayland with a NIH IVI wrapper. Some headers for
@@ -132,6 +149,19 @@ the interface I found on the car, but it appears to be similar in some respects.
 #### Splashplayer
 NIH code that displays SOMETHING while everyone waits for a the web browser to
 start up.
+
+#### svcjcinativeguictrl
+I assume this thing makes sure that opera is shown on screen correctly, but I've
+found it's safe to just kill it, so more work is needed.
+
+#### jci_cpu_gauge
+this is a cute little GUI program that will display the current system usage to
+the user. There's a button combo to active it (show/hide) but I don't remember
+what it is, and now can't find the combo.
+
+The button combo press for this and for reboot exists inside
+`libjcibenchmarks-kapture.so` but good luck that thing. C++ has done a great job
+mangling that binary.
 
 #### Opera
 Seems to interfaces with Wayland directly, controlling what's on screen.
