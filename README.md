@@ -132,6 +132,11 @@ something something, accident management
 
 something something, navigation stuff too
 
+
+#### smdb
+shared memeory database
+see also `smdb-read -h`
+
 ### GUI
 The User Interface itself is Wayland with a NIH IVI wrapper. Some headers for
 the IVI have been reverse engineered, and are available in HUDTDS (TODO link).
